@@ -30,7 +30,7 @@ def load_json(filename):
         fh.close()
     except:
         print("error")
-        dict_list = []
+        dict_list = {}
 
     return dict_list
 
@@ -100,8 +100,8 @@ def cache_all_pages(people_url, filename):
     filename(str): the name of the file to write a cache to
         
     '''
-
-    pass
+    new_dict = load_json(filename)
+    write_json(people_url, new_dict)
 
 def get_starships(filename):
     '''
