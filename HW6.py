@@ -32,7 +32,6 @@ def load_json(filename):
         print("error")
         dict_list = []
 
-
     return dict_list
 
 def write_json(filename, dict):
@@ -52,7 +51,8 @@ def write_json(filename, dict):
     None
         does not return anything
     '''  
-
+    with open(filename, 'w') as jf:
+        json.dump(dict, jf)
     
 
 def get_swapi_info(url, params=None):
@@ -72,7 +72,19 @@ def get_swapi_info(url, params=None):
     dict: dictionary representation of the decoded JSON.
     '''
 
-    pass
+    resps = requests.get(url)
+    result = resps.json()
+
+    try:
+        fh = open(result)
+        data = fh.read()
+        dict_list = json.loads(data)
+        fh.close()
+    except:
+        print("Exception!")
+        dict_list = {}
+
+    return dict_list
 
 def cache_all_pages(people_url, filename):
     '''
