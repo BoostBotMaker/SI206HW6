@@ -117,8 +117,12 @@ def get_starships(filename):
     dict: dictionary with the character's name as a key and a list of the name their 
     starships as the value
     '''
+    dict_2 = {}
+    new_dict = load_json(filename)
+    for key in new_dict:
+        dict_2[key] = get_swapi_info[new_dict]
 
-    pass
+    return dict_2
 
 #################### EXTRA CREDIT ######################
 
