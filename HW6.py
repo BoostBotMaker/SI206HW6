@@ -4,8 +4,8 @@ import unittest
 import os
 
 ###########################################
-# Your name:                              #
-# Who you worked with:                    #
+# Your name: Julian Mueller                             
+# Who you worked with: N/A                    
 ###########################################
 
 def load_json(filename):
@@ -23,8 +23,17 @@ def load_json(filename):
         if the cache exists, a dict with loaded data
         if the cache does not exist, an empty dict
     '''
+    try:
+        fh = open(filename)
+        data = fh.read()
+        dict_list = json.loads(data)
+        fh.close()
+    except:
+        print("error")
+        dict_list = []
 
-    pass
+
+    return dict_list
 
 def write_json(filename, dict):
     '''
@@ -44,7 +53,7 @@ def write_json(filename, dict):
         does not return anything
     '''  
 
-    pass
+    
 
 def get_swapi_info(url, params=None):
     '''
